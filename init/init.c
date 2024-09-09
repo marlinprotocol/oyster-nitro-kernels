@@ -130,7 +130,7 @@ const struct InitOp ops[] = {
 
     // mount /sys (which should already exist)
     { OpMount, .mount = { "sysfs", "/sys", "sysfs", MS_NODEV | MS_NOSUID | MS_NOEXEC } },
-    { OpMount, .mount = { "cgroup_root", "/sys/fs/cgroup", "tmpfs", MS_NODEV | MS_NOSUID | MS_NOEXEC, "mode=0755" } },
+    // { OpMount, .mount = { "cgroup_root", "/sys/fs/cgroup", "tmpfs", MS_NODEV | MS_NOSUID | MS_NOEXEC, "mode=0755" } },
 };
 
 void warn(const char *msg) {
@@ -440,7 +440,7 @@ int main() {
     // as well.
     init_dev();
     init_fs(ops, sizeof(ops) / sizeof(ops[0]));
-    init_cgroups();
+    // init_cgroups();
 
     pid_t pid = launch(cmd, env);
 
